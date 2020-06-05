@@ -1,0 +1,34 @@
+<div *ngIf="!ShowDetail">
+  <div>
+    <h1>Movie Listings @ GV Cinema</h1>
+  </div>
+  <div>
+    <input
+      (keyup)="applyFilter($event.target.value)"
+      (search)="clearSearch()"
+      type="search"
+      placeholder="search movies.."
+      name=""
+      id=""
+    />
+  </div>
+  <div>
+    <h2>Popular Movies this month</h2>
+    <div class="pageHolder">
+      <div class="floatoneline" *ngFor="let movie of Movies">
+          <img src="{{ movie.imgPath }}" alt="movie" height="400" width="250" />
+          <h3 class="hoverH" (click)="GetMovie(movie.id)"><b>{{ movie.name }}</b></h3>
+          <p>{{ movie.duration }} min</p>
+          <p>User Rating: {{ movie.userRating }}</p>
+    </div>
+    </div>
+  </div>
+</div>
+
+<app-detail-movie
+  *ngIf="ShowDetail"
+  [ID]="selectedId"
+  [Movie]="Movies"
+  (editedEmitter)="updateValue($event)"
+>
+</app-detail-movie>

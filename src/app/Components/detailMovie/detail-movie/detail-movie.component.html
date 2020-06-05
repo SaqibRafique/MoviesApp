@@ -1,0 +1,33 @@
+<div *ngIf="!showMovies">
+  <div>
+    <h1>Movie Listings @ GV Cinema</h1>
+  </div>
+  <div>
+    <button (click)="ShowMovies('movies')">Back</button>
+  </div>
+  <div>
+        <h2>{{ MovieDetail.name }}</h2>
+    <p>
+      ({{ MovieDetail.mpaaRating.type }}: {{ MovieDetail.mpaaRating.label }})
+    </p>
+  </div>
+  <div class="row">
+      <div class="col">
+        <img
+        src="{{ MovieDetail.imgPath }}"
+        alt="movie"
+        height="400"
+        width="250"
+      />
+      </div>
+      <div class="col">
+        <h3>Details</h3>
+        <p>Genre: {{ MovieDetail.genre.join(", ") }}</p>
+        <p>Language: {{ MovieDetail.language }}</p>
+        <p>Duration: {{ MovieDetail.duration }} minutes</p>
+        <p>User Rating: {{ MovieDetail.userRating }}</p>
+        <h3>Synopsis</h3>
+        <p>{{ MovieDetail.description }}</p>
+      </div>
+  </div>
+</div>
